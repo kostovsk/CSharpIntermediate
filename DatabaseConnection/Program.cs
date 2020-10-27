@@ -25,10 +25,11 @@ namespace DatabaseConnection
 
    public class SqlConnection : DbConnection
    {
-      public SqlConnection() : base("Hello")
+      public SqlConnection(string sqlConnection) : base(sqlConnection)
       {
-            
+
       }
+
       public override void Opening()
       {
          Console.WriteLine("Opening an SQL Connection.");
@@ -42,7 +43,7 @@ namespace DatabaseConnection
 
    public class OracleConnection : DbConnection
    {
-      public OracleConnection() : base("Hi")
+      public OracleConnection(string oracleString) : base(oracleString)
       {
 
       }
@@ -61,9 +62,13 @@ namespace DatabaseConnection
       static void Main(string[] args)
       {
          string constring = "129231.123/dadsdw";
-         var dbcon = new SqlConnection();
+         var dbcon = new SqlConnection(constring);
          dbcon.Opening();
          dbcon.Closing();
+
+         var dbcon2 = new OracleConnection(constring);
+         dbcon2.Opening();
+         dbcon2.Closing();
 
       }
    }

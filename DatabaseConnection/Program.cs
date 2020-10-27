@@ -18,7 +18,7 @@ namespace DatabaseConnection
          dbcon2.Opening();
          dbcon2.Closing();
 
-         var dbcom = new DbCommand(new SqlConnection(constring));
+         var dbcom = new DbCommand();
          dbcom.Execute();
 
          var dbcom2 = new DbCommand(new OracleConnection(constring));

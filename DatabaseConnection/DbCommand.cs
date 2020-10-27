@@ -4,10 +4,13 @@ namespace DatabaseConnection
 {
    public class DbCommand
    {
+      public DbCommand()
+      {
+         throw new InvalidOperationException("Connection cannot be null.");
+      }
       public DbCommand(DbConnection connection)
       {
-         if (connection == null)
-            throw new InvalidOperationException("Connection cannot be null.");
+        
       }
 
       public void Execute()

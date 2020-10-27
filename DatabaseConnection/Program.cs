@@ -57,6 +57,22 @@ namespace DatabaseConnection
          Console.WriteLine("Closing an Oracle Connection.");
       }
    }
+
+   public class DbCommand
+   {
+      public DbCommand(DbConnection connection)
+      {
+         if (connection == null)
+            throw new InvalidOperationException("Connection cannot be null.");
+      }
+
+      public void Execute()
+      {
+         Console.WriteLine("Open the connection.");
+         Console.WriteLine("Run the instruction.");
+         Console.WriteLine("Close the connection.");
+      }
+   }
    class Program
    {
       static void Main(string[] args)
@@ -70,6 +86,8 @@ namespace DatabaseConnection
          dbcon2.Opening();
          dbcon2.Closing();
 
+         var dbcom = new DbCommand(new SqlConnection(constring));
+         dbcom.Execute();
       }
    }
 }

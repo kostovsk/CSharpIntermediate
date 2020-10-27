@@ -25,6 +25,10 @@ namespace DatabaseConnection
 
    public class SqlConnection : DbConnection
    {
+      public SqlConnection() : base("Hello")
+      {
+            
+      }
       public override void Opening()
       {
          Console.WriteLine("Opening an SQL Connection.");
@@ -38,6 +42,10 @@ namespace DatabaseConnection
 
    public class OracleConnection : DbConnection
    {
+      public OracleConnection() : base("Hi")
+      {
+
+      }
       public override void Opening()
       {
          Console.WriteLine("Opening an Oracle Connection");

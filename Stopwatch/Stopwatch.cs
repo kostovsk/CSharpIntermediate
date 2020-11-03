@@ -1,33 +1,45 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Stopwatch
 {
    public class Stopwatch
    {
-      public DateTime start;
-      public DateTime end;
-      public TimeSpan duration;
+      private DateTime start;
+      private DateTime end;
 
-      //public Stopwatch()
-      //{
-      //   start = start;
-      //   end = end;
-      //   duration = duration;
-      //}
-
-      public void Start()
+      public void CalculateDuration(string input)
       {
-         this.start = DateTime.Now;
+         var list = new List<string> { "start", "stop", "quit" };
+
+         while (list.Contains(input))
+         {
+            while (!input.Equals("quit"))
+            {
+               if (input.Equals("start"))
+               {
+                  this.start = DateTime.Now;
+                  input = Console.ReadLine();
+                  if (input.Equals("start"))
+                     throw new InvalidOperationException("Stopwatch started twice.");
+                  else
+                     continue;
+               }
+               if (input.Equals("stop"))
+               {
+                  this.end = DateTime.Now;
+                  Console.WriteLine(GetDuration());
+                  input = Console.ReadLine();
+                  continue;
+               }
+            }
+            break;
+         }
       }
 
-      public void End()
+      public TimeSpan GetDuration()
       {
-         this.end = DateTime.Now;
-      }
-
-      public void Duration()
-      {
-         this.duration = end - start;
+         return end - start;
       }
    }
 }

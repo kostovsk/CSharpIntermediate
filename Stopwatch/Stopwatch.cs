@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Stopwatch
 {
@@ -12,26 +13,23 @@ namespace Stopwatch
       {
          var list = new List<string> { "start", "stop", "quit" };
 
-         while (list.Contains(input))
+         while (!input.Equals("quit") && list.Contains(input))
          {
-            while (!input.Equals("quit"))
+            if (input.Equals("start"))
             {
+               this.start = DateTime.Now;
+               input = Console.ReadLine();
                if (input.Equals("start"))
-               {
-                  this.start = DateTime.Now;
-                  input = Console.ReadLine();
-                  if (input.Equals("start"))
-                     throw new InvalidOperationException("Stopwatch started twice.");
-                  else
-                     continue;
-               }
-               if (input.Equals("stop"))
-               {
-                  this.end = DateTime.Now;
-                  Console.WriteLine(GetDuration());
-                  input = Console.ReadLine();
+                  throw new InvalidOperationException("Stopwatch started twice.");
+               else
                   continue;
-               }
+            }
+            if (input.Equals("stop"))
+            {
+               this.end = DateTime.Now;
+               Console.WriteLine(GetDuration());
+               input = Console.ReadLine();
+               continue;
             }
             break;
          }

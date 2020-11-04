@@ -6,7 +6,7 @@ namespace StackExercise
 {
    public class Stack
    {
-      public List<object> _stack;
+      private List<object> _stack;
 
       public Stack()
       {
@@ -27,9 +27,12 @@ namespace StackExercise
       {
          if (_stack.Any() != true)
             throw new InvalidOperationException("Cannot add to an empty list");
-         var len = _stack.Count();
-         var item = _stack[len - 1];
-         _stack.RemoveAt(len - 1);
+
+         var count = _stack.Count - 1;
+         var item = _stack[count];
+
+         _stack.RemoveAt(count);
+
          return item;
       }
 
@@ -37,6 +40,7 @@ namespace StackExercise
       {
          if (_stack == null)
             throw new InvalidOperationException("Cannot clear an empty list");
+
          _stack.Clear();
       }
    }

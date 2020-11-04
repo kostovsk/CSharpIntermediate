@@ -2,9 +2,9 @@
 {
    public class Workflow
    {
-      private readonly IExecutor _executor;
+      private readonly IWorkFlow _executor;
 
-      public Workflow(IExecutor executor)
+      public Workflow(IWorkFlow executor) 
       {
          _executor = executor;
       }

@@ -4,26 +4,9 @@ namespace WorkflowEngine
 {
    public class WorkflowEngine
    {
-      private List<IWorkFlow> list;
-
-      public WorkflowEngine()
+      public void Run(IWorkflow workflow)
       {
-         list = new List<IWorkFlow>();
-      }
-
-      public void AddWorkflow(IWorkFlow iWorkflow)
-      {
-         list.Add(iWorkflow);
-      }
-
-      public void RemoveWorkflow(IWorkFlow iWorkflow)
-      {
-         list.Remove(iWorkflow);
-      }
-
-      public void Run()
-      {
-         foreach (var item in list)
+         foreach (var item in workflow.GetTasks())
          {
             item.Execute();
          }
